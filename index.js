@@ -4,6 +4,8 @@ const express = require('express')
 const axios = require('axios')
 //Import AND config dotenv library
 require('dotenv').config()
+//Access models
+const db = require('./models')
 //PORT
 const PORT = 3000
 //Declare the app
