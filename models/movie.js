@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     year: DataTypes.INTEGER,
     genre: DataTypes.STRING,
+    poster: DataTypes.STRING,
     plot: DataTypes.STRING,
     production: DataTypes.STRING,
     recommend: DataTypes.BOOLEAN

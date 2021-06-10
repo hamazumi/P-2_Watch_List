@@ -5,7 +5,7 @@ async function addToWatch() {
       // First, get a reference to a pet.
       const [user, userCreated] = await db.user.findOrCreate({
         where: {
-          user: "Ken",
+          user: "Kenuser",
         }
       })
   
@@ -25,5 +25,24 @@ async function addToWatch() {
       console.log(error)
     }
   }
+
+  // addToWatch()
+
+  //Get all users that added movie to watch list
+  async function findUsers() {
+    try {
+      const movie = await db.movie.findOne({
+        where: { 
+            title: "Test movie"
+         }
+      })
   
-  addToWatch()
+      const users = await movie.getUsers()
+      console.log(`${users.length} added ${movie.title} to watchlist.`);
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  
+  findUsers()
+
