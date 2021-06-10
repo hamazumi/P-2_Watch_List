@@ -32,7 +32,8 @@ app.get('/', (req,res) => {
   res.render('index')
 })
 
-
+// Imports all routes from the pokemon routes file
+app.use('/watchlist', require('./routes/watchlist'));
 
 
 //open up a port for app to listen
