@@ -3,7 +3,13 @@
 <dvi>
     <ul>
         <img src="<%= movie.Poster %>"  alt="poster">
+        
         <a href="/detail/<%= movie.imdbID%>">More Info</a>
+
+        <form method="POST" action="/watchlist">
+            <input hidden type="text" name="title" value="<%= movie.title %>">
+            <button type="submit">Add Movie to Watchlist</button>
+        </form>
     </ul>
 </dvi>    
 <% }) %>

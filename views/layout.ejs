@@ -8,7 +8,25 @@
 </head>
 <body>
   <nav>
-    <a href="/">FRONT PAGE</a>
+    <div>
+      <a href="/">FRONT PAGE</a>
+      <div id="logout"></div>
+    </div>
+    <div>
+      <% if (locals.logout) { %>
+        <script>
+            localStorage.clear()
+        </script>
+      <% } %>
+      <script>
+          let user = localStorage.getItem('user')
+          console.log(user)
+          if (user) {
+              document.getElementById('logout').innerHTML = "<a href='user/logout'>LOGOUT</a>"
+          }
+      </script>
+    </div>
+
   </nav>
   <main>
     <%- body %>

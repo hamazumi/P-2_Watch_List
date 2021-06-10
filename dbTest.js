@@ -2,18 +2,18 @@ const db = require('./models')
 
 async function addToWatch() {
     try {
-      // First, get a reference to a pet.
+      // First, get a reference to a user.
       const [user, userCreated] = await db.user.findOrCreate({
         where: {
           user: "Kenuser",
         }
       })
   
-      // Second, get a reference to a toy.
+      // Second, get a reference to a movie.
       const [movie, movieCreated] = await db.movie.findOrCreate({
         where: { 
-            title: "Test movie", 
-            year: 1993
+            title: "Different Test Movie", 
+            year: 2000
          }
       })
   
@@ -31,14 +31,17 @@ async function addToWatch() {
   //Get all users that added movie to watch list
   async function findUsers() {
     try {
-      const movie = await db.movie.findOne({
+      const user = await db.user.findOne({
         where: { 
-            title: "Test movie"
+            user: "Kenuser"
          }
       })
   
-      const users = await movie.getUsers()
-      console.log(`${users.length} added ${movie.title} to watchlist.`);
+      const movies = await user.getMovies()
+
+      movies.forEach(movie => {
+        console.log(`${user.user} has ${movie.title} added to watchlist.`)
+      })
     } catch (error) {
       console.log(error)
     }
