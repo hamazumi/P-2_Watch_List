@@ -1,0 +1,12 @@
+<% movies.forEach(movie => { %>
+    <h1>
+        <a href="/watchlist/<%= movie.imdbID %>">
+             <%= movie.title %>  
+        </a>
+    </h1>
+<dvi>
+    <ul>
+        <img src="<%= movie.poster %>"  alt="poster">
+    </ul>
+</dvi>    
+<% }) %>

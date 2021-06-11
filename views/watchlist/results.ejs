@@ -7,7 +7,9 @@
         <a href="/detail/<%= movie.imdbID%>">More Info</a>
 
         <form method="POST" action="/watchlist">
-            <input hidden type="text" name="title" value="<%= movie.title %>">
+            <input hidden type="text" name="title" value="<%= movie.Title %>">
+            <input hidden type="text" name="poster" value="<%= movie.Poster %>">
+            <input hidden type="text" name="imdbID" value="<%= movie.imdbID %>">
             <button type="submit">Add Movie to Watchlist</button>
         </form>
     </ul>
