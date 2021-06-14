@@ -35,7 +35,7 @@ async function addToWatch() {
     try {
       const user = await db.user.findOne({
         where: { 
-            user: "Kenuser"
+            user: req.query.user
          }
       })
   

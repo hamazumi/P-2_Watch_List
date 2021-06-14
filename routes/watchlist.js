@@ -6,7 +6,7 @@ require('dotenv').config()
 const omdbApiKey = process.env.OMDB_API_KEY
 
 // GET /watchlist - return a page with favorited movies
-router.get('/', (req, res) => {
+router.get('/', async(req, res) => {
     // TODO: Get all records from the DB and render to view
     db.movie.findAll()
     .then(movies => {

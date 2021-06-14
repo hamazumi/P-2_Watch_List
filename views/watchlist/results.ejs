@@ -1,3 +1,5 @@
+<a href="/">HOME</a>
+<div id="watchlist"></div>
 <% movies.forEach(movie => { %>
     <h1> <%= movie.Title %> </h1>
 <dvi>
@@ -10,8 +12,8 @@
             <input hidden type="text" name="title" value="<%= movie.Title %>">
             <input hidden type="text" name="poster" value="<%= movie.Poster %>">
             <input hidden type="text" name="imdbID" value="<%= movie.imdbID %>">
-            <input type="hidden" name="name" value="<%= username %>">
-            <div id='add'></div>
+            <input type="hidden" name="user" value="<%= username %>">
+            <div class='add'></div>
         </form>
     </ul>
 </dvi>    
@@ -19,6 +21,11 @@
 
 <script>
     if (user) {
-        document.getElementById('add').innerHTML = "<button type='submit'>Add Movie to Watchlist</button>"
+        const buttons = document.getElementsByClassName('add')
+        for(let i = 0; i<buttons.length; i++) {
+            buttons[i].innerHTML = "<button type='submit'>Add Movie to Watchlist</button>"
+        }
+        document.getElementById('watchlist').innerHTML = "<a href='/watchlist'>Watchlist</a>"
     }
 </script>
+

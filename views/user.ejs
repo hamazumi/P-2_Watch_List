@@ -1,3 +1,6 @@
+<a href="/">HOME</a>
+<a href="/watchlist">Watchlist</a>
+
 <% if (!locals.username) { %>
     <h1 id="user"></h1>
     <script>
@@ -7,12 +10,11 @@
         console.log(`User logged in: ${currentUser}`)
     </script>
 <% } else { %>
-    <h1>Welcome Back, <%= username %></h1>
-    <h1>Movie Search</h1>
+    <h1> <%= username %>'s Movie Search</h1>
     <p>Search for a movie below...</p>
     <form action="/results" method="GET">
         <input type="hidden" name="user" value="<%= username %>">
-        <input type="text" name="search">
+        <input type="text" name="search" placeholder="Search Movie">
         <input type="submit" value="Submit">
     </form>
     <script>
@@ -24,3 +26,5 @@
         console.log(`User logged in: ${currentUser}`)
     </script>
 <% } %>
+
+
