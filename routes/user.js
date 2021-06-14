@@ -12,12 +12,17 @@ const router = express.Router()
 // displays profile page for current user
 router.post('/', (req, res) => {
     let currentUser = req.body.username
-
-    res.render('profile', { username: currentUser })
+    db.user.findOrCreate({
+        where: {
+        user: req.body.username
+        }
+    })
+    res.render('user', { username: currentUser })
 })
+  
 
 router.get('/', (req, res) => {
-    res.render('profile')
+    res.render('user')
 })
 
 
