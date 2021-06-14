@@ -20,6 +20,7 @@ router.get('/', (req, res) => {
   // POST /watchlist - receive the title of a movie and add it to the database
   router.post('/', (req, res) => {
     // TODO: Get form data and add a new record to DB
+    console.log(req.body)
     db.movie.findOrCreate({
       where: {
         title: req.body.title,

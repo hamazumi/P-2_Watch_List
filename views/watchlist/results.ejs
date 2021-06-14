@@ -10,8 +10,15 @@
             <input hidden type="text" name="title" value="<%= movie.Title %>">
             <input hidden type="text" name="poster" value="<%= movie.Poster %>">
             <input hidden type="text" name="imdbID" value="<%= movie.imdbID %>">
-            <button type="submit">Add Movie to Watchlist</button>
+            <input type="hidden" name="name" value="<%= username %>">
+            <div id='add'></div>
         </form>
     </ul>
 </dvi>    
 <% }) %>
+
+<script>
+    if (user) {
+        document.getElementById('add').innerHTML = "<button type='submit'>Add Movie to Watchlist</button>"
+    }
+</script>

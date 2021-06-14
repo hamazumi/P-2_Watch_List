@@ -18,8 +18,9 @@ router.get('/', (req, res) => {
     //RESPONSE FROM API (ACCESS to informaiton)
         .then((resFromAPI) => {
             let movies = resFromAPI.data.Search
-        
-            res.render('watchlist/results.ejs', {movies: movies})
+            console.log(req.query)
+            res.render('watchlist/results.ejs', {username: req.query.user, movies: movies})
+            
         })
         .catch(err => {console.log(err)})
   })

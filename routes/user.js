@@ -19,7 +19,7 @@ router.post('/', (req, res) => {
     })
     res.render('user', { username: currentUser })
 })
-  
+
 
 router.get('/', (req, res) => {
     res.render('user')
