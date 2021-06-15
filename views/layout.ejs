@@ -10,6 +10,7 @@
   <nav>
     <div>
       <div id="logout"></div>
+      <div id="watchlist"></div>
     </div>
     <div>
       <% if (locals.logout) { %>
@@ -22,6 +23,8 @@
           console.log(user)
           if (user) {
               document.getElementById('logout').innerHTML = "<a href='user/logout'>LOGOUT</a>"
+              document.getElementById('watchlist').innerHTML = "<a href='/watchlist'>Watchlist</a>"
+              console.log('USER FROM LAYOUT.EJS: ' + user)
           }
       </script>
     </div>

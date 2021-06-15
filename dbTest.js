@@ -1,6 +1,6 @@
 const db = require('./models')
 
-db.movie.sync({ alter: true })
+// db.movie.sync({ alter: true })
 
 async function addToWatch() {
     try {
@@ -35,15 +35,17 @@ async function addToWatch() {
     try {
       const user = await db.user.findOne({
         where: { 
-            user: req.query.user
-         }
+          user: "Kenuser"
+            // user: req.query.user
+         },
+         include: [db.movie]
       })
-  
-      const movies = await user.getMovies()
+      console.log(user.movies)
+      // const movies = await user.getMovies()
 
-      movies.forEach(movie => {
-        console.log(`${user.user} has ${movie.title} added to watchlist.`)
-      })
+      // movies.forEach(movie => {
+      //   console.log(`${user.user} has ${movie.title} added to watchlist.`)
+      // })
     } catch (error) {
       console.log(error)
     }

@@ -6,36 +6,56 @@ require('dotenv').config()
 const omdbApiKey = process.env.OMDB_API_KEY
 
 // GET /watchlist - return a page with favorited movies
-router.get('/', async(req, res) => {
+router.get('/:id', (req, res) => {
+  
+  console.log(req.params)
     // TODO: Get all records from the DB and render to view
-    db.movie.findAll()
-    .then(movies => {
+    db.user.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [db.movie]
+    })
+    .then(foundUser => {
+      console.log(foundUser)
+      const movies = foundUser.get().movies
       res.render('watchlist/watchlist.ejs', { movies: movies })
     }) 
     .catch(err => {
-      log(err)
+      console.log(err)
     })
   });
   
-  // POST /watchlist - receive the title of a movie and add it to the database
-  router.post('/', (req, res) => {
-    // TODO: Get form data and add a new record to DB
-    console.log(req.body)
-    db.movie.findOrCreate({
-      where: {
-        title: req.body.title,
-        poster: req.body.poster,
-        imdbID: req.body.imdbID
-      }
-    })
-      .then (movie => {
-        res.redirect('/watchlist')
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  });
+ // POST /watchlist - receive the title of a movie and add it to the database
+ router.post('/', async (req, res) => {
+  // TODO: Get form data and add a new record to DB
+  console.log(req.body, '========>>>>>>>>========' )
+  const foundUser = await db.user.findOne({
+    where: {
+      user: req.body.user
+    }
+  })
+  const movie = await db.movie.findOrCreate({
+    where: {
+      title: req.body.title,
+      poster: req.body.poster,
+      imdbID: req.body.imdbID
+    }
+  })
+  await foundUser.addMovie(movie[0])
+  const user = await db.user.findOne({
+    where: {
+      user: req.body.user
+    },
+    include: [db.movie]
+  })
+  const userId = user.get().id
+  res.redirect(`/watchlist/${userId}`)
+});
   
+
+
+
   // GET /:title - return movie details
 router.get('/:imdbID', (req, res) => {
     // TODO: Get all records from the DB and render to view

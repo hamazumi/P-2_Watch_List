@@ -10,14 +10,15 @@ const router = express.Router()
 
 
 // displays profile page for current user
-router.post('/', (req, res) => {
-    let currentUser = req.body.username
-    db.user.findOrCreate({
+router.post('/', async (req, res) => {
+ let currentUser = await db.user.findOrCreate({
         where: {
         user: req.body.username
         }
     })
-    res.render('user', { username: currentUser })
+    console.log("USER.JS username= " + currentUser[0].dataValues.user)
+    res.render('user', { username: currentUser[0].dataValues.user })
+
 })
 
 
