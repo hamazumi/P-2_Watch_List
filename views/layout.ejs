@@ -23,7 +23,7 @@
           let userId = localStorage.getItem('userId')
           console.log(user)
           if (user) {
-              document.getElementById('logout').innerHTML = "<a href='user/logout'>LOGOUT</a>"
+              document.getElementById('logout').innerHTML = "<a href='/user/logout'>LOGOUT</a>"
               document.getElementById('watchlist').innerHTML = `<a href='/watchlist/${userId}'>Watchlist</a>`
               console.log('USER FROM LAYOUT.EJS: ' + user)
           }
