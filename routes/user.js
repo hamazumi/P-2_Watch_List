@@ -16,9 +16,9 @@ router.post('/', async (req, res) => {
         user: req.body.username
         }
     })
-    console.log("USER.JS username= " + currentUser[0].dataValues.user)
-    res.render('user', { username: currentUser[0].dataValues.user })
-
+let userId = currentUser[0].dataValues.id
+    console.log("USER.JS username= " + currentUser[0].dataValues.id)
+    res.render('user', { username: currentUser[0].dataValues.user, userId: userId})
 })
 
 

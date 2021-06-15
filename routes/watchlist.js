@@ -56,22 +56,4 @@ router.get('/:id', (req, res) => {
 
 
 
-  // GET /:title - return movie details
-router.get(':id/:imdbID', (req, res) => {
-  console.log(req.params)
-    // TODO: Get all records from the DB and render to view
-    let newObject = {
-        params: {
-          i: req.params.imdbID,
-          apikey:omdbApiKey
-        }
-      }
-    axios.get('http://www.omdbapi.com/', newObject)
-    .then(apiResponse => {
-      let details = apiResponse.data
-      console.log('details')
-      res.render('watchlist/detail.ejs', {details: details})
-    })
-  });
-
   module.exports = router;
