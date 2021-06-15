@@ -1,11 +1,10 @@
-<a href="/">HOME</a>
+<a href="/user">HOME</a>
 
 <% if (!locals.username) { %>
     <h1 id="user"></h1>
     <script>
         let currentUser = localStorage.getItem('user')
         document.getElementById('user').innerText = ` Hello, ${currentUser}`
-        document.getElementById('userInput').value = currentUser
         console.log(`User logged in: ${currentUser}`)
     </script>
 <% } else { %>
