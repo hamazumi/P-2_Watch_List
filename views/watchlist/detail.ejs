@@ -1,2 +1,15 @@
-<a href="/user">HOME</a>
-<h1><%= details.Plot %></h1>
+<div id="home"></div>
+<h1><%= details.Title %></h1>
+<p>Year: <%= details.Year %></p>
+<p>Genre: <%= details.Genre %></p>
+<p>Actors: <%= details.Actors %></p>
+<h2><%= details.Plot %></h2>
+
+
+
+
+<script>
+    if (!user) {
+        document.getElementById('home').innerHTML = "<a href='/'>HOME</a>"
+    }
+</script>

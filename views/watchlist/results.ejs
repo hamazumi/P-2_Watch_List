@@ -1,4 +1,5 @@
-<a href="/user">HOME</a>
+<div id="home"></div>
+<div id="search"></div>
 <div id="watchlist"></div>
 <% movies.forEach(movie => { %>
     <h1> <%= movie.Title %> </h1>
@@ -26,7 +27,8 @@
             buttons[i].innerHTML = "<button type='submit'>Add Movie to Watchlist</button>"
         }
         console.log(currentUser.id)
-        document.getElementById('watchlist').innerHTML = "<a href='/watchlist'>Watchlist</a>"
+        
+    } else {
+        document.getElementById('home').innerHTML = "<a href='/'>HOME</a>"
     }
 </script>
-

@@ -54,12 +54,12 @@ router.get('/:id', (req, res) => {
   
 //DELETE
 router.delete('/:imdbID', async(req, res) => {
-  await db.movie.destroy({
+  await db.user_list.destroy({
     where: {
-      imdbID: req.params.imdbID
+      userId: req.body.user,
+      movieId: req.body.movieId
     }
   })
-  console.log(req.body)
 
   res.redirect(`/watchlist/${req.body.user}`)
 })
