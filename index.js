@@ -32,6 +32,22 @@ app.get('/', (req,res) => {
   res.render('index')
 })
 
+app.get('/detail/:imdbID', (req, res) => {
+  let newObject = {
+    params: {
+      i: req.params.imdbID,
+      apikey:omdbApiKey
+    }
+  }
+  axios.get('http://www.omdbapi.com/', newObject)
+  .then((resFromAPI) => {
+    console.log(resFromAPI.data.Plot)
+    let details = resFromAPI.data
+    console.log(details)
+    res.render('watchlist/detail.ejs', {details: details})
+  })
+  .catch(err => {console.log(err)})
+})
 
 // Imports all routes from the pokemon routes file
 app.use('/results', require('./routes/results'));
