@@ -9,5 +9,9 @@
     <ul>
         <img src="<%= movie.poster %>"  alt="poster">
     </ul>
+    <form method="POST" action="/watchlist/<%= movie.imdbID %>/?_method=DELETE">
+        <input type="hidden" name="user" value="<%= userId %>">
+        <input type="submit" value="Delete">
+    </form>
 </dvi>    
 <% }) %>

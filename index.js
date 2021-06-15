@@ -12,9 +12,13 @@ const PORT = 3000
 const app = express()
 //Import ejsLayouts
 const ejsLayouts = require('express-ejs-layouts')
+//Import Method-override
+const methodOverride = require('method-override')
 //Define API key var retreived from .env file
 const omdbApiKey = process.env.OMDB_API_KEY
 
+//Set methodOverride
+app.use(methodOverride('_method'))
 // Sets EJS as the view engine (Ability to use view folder and names)
 app.set('view engine', 'ejs');
 // Specifies the location of the static assets folder

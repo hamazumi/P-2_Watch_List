@@ -19,7 +19,7 @@ router.get('/:id', (req, res) => {
     .then(foundUser => {
       console.log(foundUser)
       const movies = foundUser.get().movies
-      res.render('watchlist/watchlist.ejs', { movies: movies })
+      res.render('watchlist/watchlist.ejs', { movies: movies, userId:req.params.id })
     }) 
     .catch(err => {
       console.log(err)
@@ -29,7 +29,6 @@ router.get('/:id', (req, res) => {
  // POST /watchlist - receive the title of a movie and add it to the database
  router.post('/', async (req, res) => {
   // TODO: Get form data and add a new record to DB
-  console.log(req.body, '========>>>>>>>>========' )
   const foundUser = await db.user.findOne({
     where: {
       user: req.body.user
@@ -53,7 +52,16 @@ router.get('/:id', (req, res) => {
   res.redirect(`/watchlist/${userId}`)
 });
   
+//DELETE
+router.delete('/:imdbID', async(req, res) => {
+  await db.movie.destroy({
+    where: {
+      imdbID: req.params.imdbID
+    }
+  })
+  console.log(req.body)
 
-
+  res.redirect(`/watchlist/${req.body.user}`)
+})
 
   module.exports = router;
