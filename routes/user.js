@@ -1,8 +1,10 @@
+//IMPORT ALL DEPENDENCIES 
 const express = require('express')
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
 const db = require('../models')
 
+//Access dependencies
 app.set('view engine', 'ejs')
 app.use(expressLayouts)
 app.use(express.urlencoded(true))
