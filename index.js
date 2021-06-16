@@ -7,7 +7,7 @@ require('dotenv').config()
 //Access models
 const db = require('./models')
 //PORT
-const PORT = 3000
+const PORT = process.env.PORT || 3000
 //Declare the app
 const app = express()
 //Import ejsLayouts
