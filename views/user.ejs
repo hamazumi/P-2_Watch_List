@@ -1,37 +1,42 @@
-<% if (!locals.username) { %>
-    <h1 id="user"></h1>
-    <form action="/results" method="GET">
-       <input id="currentUser" type="hidden" name="user">
-       <input type="text" name="search" placeholder="Search Movie">
-       <input type="submit" value="Submit">
-   </form>
-    <script>
-        let currentUser = localStorage.getItem('user')
-        document.getElementById('user').innerText = `${currentUser}'s Movie Search`
-        document.getElementById('currentUser').value = currentUser
-        console.log(`User logged in: ${currentUser}`)
-    </script>
-<% } else { %>
-    <h1> <%= username %>'s Movie Search</h1>
-    <p>Search for a movie below...</p>
-    <form action="/results" method="GET">
-        <input type="hidden" name="user" value="<%= username %>">
-        <input type="text" name="search" placeholder="Search Movie">
-        <input type="submit" value="Submit">
-    </form>
-    <script>
-        if (!localStorage.getItem('user')) {
-            let user = "<%- username %>"
-            localStorage.setItem('user', user)
-        } 
-        if (!localStorage.getItem('userId')) {
-            let userId = "<%- userId %>"
-            localStorage.setItem('userId', userId)
-        } 
-
-        let currentUser = localStorage.getItem('user')
-        console.log(`User logged in: ${currentUser}`)
-    </script>
-<% } %>
+<div class="flex justify-center my-40">
+    <% if (!locals.username) { %>
+        <div class="flex-col ml-20">
+            <h1 class="font-semibold text-gray-400 text-xl" id="user"></h1>
+            <form action="/results" method="GET">
+               <input id="currentUser" type="hidden" name="user">
+               <input class="border-4 border-black p-1" type="text" name="search" placeholder="Search Movie">
+               <input class="border-4 border-black transition duration-500 ease-out hover:bg-gray-700 text-md font-bold bg-gray-800 text-white px-1 rounded" type="submit" value="SEARCH">
+           </form>
+        </div>
+        <script>
+            let currentUser = localStorage.getItem('user')
+            document.getElementById('user').innerText = `${currentUser}'s Movie Search`
+            document.getElementById('currentUser').value = currentUser
+            console.log(`User logged in: ${currentUser}`)
+        </script>
+    <% } else { %>
+        <div class="flex-col ml-20">
+            <h1 class="font-semibold text-gray-400 text-xl"> <%= username %>'s Movie Search</h1>
+            <form action="/results" method="GET">
+                <input type="hidden" name="user" value="<%= username %>">
+                <input class="border-4 border-black p-1" type="text" name="search" placeholder="Search Movie">
+                <input class="border-4 border-black transition duration-500 ease-out hover:bg-gray-700 text-md font-bold bg-gray-800 text-white px-1 rounded" type="submit" value="SEARCH">
+            </form>
+        </div>
+        <script>
+            if (!localStorage.getItem('user')) {
+                let user = "<%- username %>"
+                localStorage.setItem('user', user)
+            } 
+            if (!localStorage.getItem('userId')) {
+                let userId = "<%- userId %>"
+                localStorage.setItem('userId', userId)
+            } 
+    
+            let currentUser = localStorage.getItem('user')
+            console.log(`User logged in: ${currentUser}`)
+        </script>
+    <% } %>
+</div>
 
 
