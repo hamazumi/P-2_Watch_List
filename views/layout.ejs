@@ -8,11 +8,23 @@
   <title>WATCH LIST</title>
 </head>
 <body>
-  <nav>
-    <div>
-      <div id="logout"></div>
-      <div id="watchlist"></div>
+  <nav class="bg-gray-400">
+    <div class="px-3 mx-auto border border-black">
+      <div class="flex justify-between">
+
+        <div class="flex space-x-4 py-5 text-gray-700">
+          <div id="home"></div>
+          <div id="watchlist"></div>
+        </div>
+
+        <div class="flex space-x-4 py-5 px-3 text-gray-500">
+          <div id="search"></div>
+          <div id="logout"></div>
+        </div>
+  
+      </div>
     </div>
+
     
     <div>
       <% if (locals.logout) { %>
@@ -25,16 +37,21 @@
           let userId = localStorage.getItem('userId')
           console.log(user)
           if (user) {
-              document.getElementById('logout').innerHTML = "<a href='/user/logout'>LOGOUT</a>"
-              document.getElementById('watchlist').innerHTML = `<a href='/watchlist/${userId}'>Watchlist</a>`
-              console.log('USER FROM LAYOUT.EJS: ' + user)
+              document.getElementById('logout').innerHTML = "<a class='hover:underline hover:text-gray-900 font-bold' href='/user/logout'>LOGOUT</a>"
+              document.getElementById('watchlist').innerHTML = `<a class='flex items-center hover:underline hover:text-gray-900 font-bold' href='/watchlist/${userId}'><svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z' /></svg><span>Watchlist</span></a>`
+              document.getElementById('search').innerHTML = "<a class='bg-yellow-500 hover:bg-yellow-300 text-white rounded flex items-center hover:underline transition duration-200 py-1 px-3 font-bold' href='/user'><span>Search Movie</span><svg xmlns='http://www.w3.org/2000/svg' class='h-5 w-5' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z' /></svg></a>"
+          } else {
+            document.getElementById('home').innerHTML = "<a class='flex items-center hover:underline hover:text-gray-900 font-bold' href='/'> <svg xmlns='http://www.w3.org/2000/svg' class='h-7 w-7' viewBox='0 0 20 20' fill='currentColor'><path d='M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z' /></svg><span>HOME</span></a>"
           }
       </script>
     </div>
 
   </nav>
-  <main>
+
+  <main class="container">
     <%- body %>
   </main>
 </body>
 </html>
+
+
