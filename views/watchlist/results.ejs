@@ -1,27 +1,34 @@
-<% movies.forEach(movie => { %>
-    <h1> <%= movie.Title %> </h1>
-<dvi>
-    <ul>
-        <img src="<%= movie.Poster %>"  alt="poster">
-        
-        <a href="/detail/<%= movie.imdbID%>">More Info</a>
-
-        <form method="POST" action="/watchlist">
-            <input hidden type="text" name="title" value="<%= movie.Title %>">
-            <input hidden type="text" name="poster" value="<%= movie.Poster %>">
-            <input hidden type="text" name="imdbID" value="<%= movie.imdbID %>">
-            <input type="hidden" name="user" value="<%= username %>">
-            <div class='add'></div>
-        </form>
-    </ul>
-</dvi>    
-<% }) %>
+<div class="flex flex-wrap justify-around content-around ml-10">
+    <% movies.forEach(movie => { %>
+    <div>
+        <div class="my-5">
+            <img class="border-8 border-black w-72 h-96" src="<%= movie.Poster %>"  alt="poster">
+            <div class="flex justify-around my-2">
+                <div >
+                    <form method="POST" action="/watchlist">
+                        <input hidden type="text" name="title" value="<%= movie.Title %>">
+                        <input hidden type="text" name="poster" value="<%= movie.Poster %>">
+                        <input hidden type="text" name="imdbID" value="<%= movie.imdbID %>">
+                        <input type="hidden" name="user" value="<%= username %>">
+                        <div class='add'></div>
+                    </form>  
+                </div>
+                <div>
+                    <a href="/detail/<%= movie.imdbID%>">
+                        <button class="border-4 border-black transition duration-500 ease-out hover:bg-gray-700 text-md font-bold bg-gray-800 text-white px-1 rounded">More Info</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>    
+    <% }) %>
+</div>
 
 <script>
     if (user) {
         const buttons = document.getElementsByClassName('add')
         for(let i = 0; i<buttons.length; i++) {
-            buttons[i].innerHTML = "<button type='submit'>Add Movie to Watchlist</button>"
+            buttons[i].innerHTML = "<button class='border-4 border-black transition duration-500 ease-out hover:bg-gray-700 text-md font-bold bg-gray-800 text-white px-1 rounded' type='submit'>Add to Watchlist</button>"
         }
         console.log(currentUser.id)
     } 
