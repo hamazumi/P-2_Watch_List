@@ -1,8 +1,16 @@
+<div class="flex justify-center text-6xl font-bold text-gray-400">
+        <p>Movies</p>
+</div>
 <div class="flex flex-wrap justify-around content-around ml-10">
     <% movies.forEach(movie => { %>
     <div>
         <div class="my-5">
-            <img class="border-8 border-black w-72 h-96" src="<%= movie.Poster %>"  alt="poster">
+            <div>
+                <a href="/detail/<%= movie.imdbID %>">
+                 <img class="opacity-80 transition duration-500 ease-out transform hover:scale-105 hover:opacity-100 border-8 border-black w-72 h-96" src="<%= movie.Poster %>"  alt="poster">
+                </a>
+            </div>
+        
             <div class="flex justify-around my-2">
                 <div >
                     <form method="POST" action="/watchlist">
@@ -12,11 +20,6 @@
                         <input type="hidden" name="user" value="<%= username %>">
                         <div class='add'></div>
                     </form>  
-                </div>
-                <div>
-                    <a href="/detail/<%= movie.imdbID%>">
-                        <button class="border-4 border-black transition duration-500 ease-out hover:bg-gray-700 text-md font-bold bg-gray-800 text-white px-1 rounded">More Info</button>
-                    </a>
                 </div>
             </div>
         </div>

@@ -1,17 +1,23 @@
-<% movies.forEach(movie => { %>
-    <h1>
-        <a href="/detail/<%= movie.imdbID %>">
-             <%= movie.title %>  
-        </a>
-    </h1>
-<dvi>
-    <ul>
-        <img src="<%= movie.poster %>"  alt="poster">
-    </ul>
-    <form method="POST" action="/watchlist/<%= movie.imdbID %>/?_method=DELETE">
-        <input type="hidden" name="user" value="<%= userId %>">
-        <input type="hidden" name="movieId" value="<%= movie.id %>">
-        <input type="submit" value="Delete">
-    </form>
-</dvi>    
-<% }) %>
+<div class="flex justify-center text-6xl font-bold text-gray-400">
+    <p>My Watchlist</p>
+</div>
+<div class="flex flex-wrap justify-around content-around ml-10">
+    <% movies.forEach(movie => { %>
+        <div class="my-5">
+            <dvi>
+                <div>
+                    <a href="/detail/<%= movie.imdbID %>">
+                    <img class="opacity-80 transition duration-500 ease-out transform hover:scale-105 hover:opacity-100 border-8 border-black w-72 h-96" src="<%= movie.poster %>"  alt="poster">
+                    </a>
+                </div>
+                <div class="flex justify-center my-2">
+                    <form method="POST" action="/watchlist/<%= movie.imdbID %>/?_method=DELETE">
+                        <input type="hidden" name="user" value="<%= userId %>">
+                        <input type="hidden" name="movieId" value="<%= movie.id %>">
+                        <input class="border-4 border-black transition duration-500 ease-out hover:bg-gray-700 text-md font-bold bg-gray-800 text-white px-1 rounded" type="submit" value="REMOVE">
+                    </form>
+                </div>
+            </dvi>    
+        </div>
+    <% }) %>
+</div>
