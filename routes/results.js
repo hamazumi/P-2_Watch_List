@@ -1,3 +1,4 @@
+//IMPORT ALL DEPENDENCIES 
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
@@ -5,7 +6,7 @@ const axios = require('axios');
 require('dotenv').config()
 const omdbApiKey = process.env.OMDB_API_KEY
 
-//Create /results route
+//GET ROUTE /results gives access to API with search form
 router.get('/', (req, res) => {
     let newObject = {
       params:{

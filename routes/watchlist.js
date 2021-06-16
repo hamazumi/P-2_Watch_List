@@ -1,3 +1,4 @@
+//IMPORT ALL DEPENDENCIES 
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
@@ -5,10 +6,9 @@ const axios = require('axios');
 require('dotenv').config()
 const omdbApiKey = process.env.OMDB_API_KEY
 
-// GET /watchlist - return a page with favorited movies
+// GET ROUTE /watchlist/:ID - return My Watchlist from Movie Model
 router.get('/:id', (req, res) => {
-  
-  console.log(req.params)
+  // console.log(req.params)
     // TODO: Get all records from the DB and render to view
     db.user.findOne({
       where: {
@@ -17,7 +17,7 @@ router.get('/:id', (req, res) => {
       include: [db.movie]
     })
     .then(foundUser => {
-      console.log(foundUser)
+      // console.log(foundUser)
       const movies = foundUser.get().movies
       res.render('watchlist/watchlist.ejs', { movies: movies, userId:req.params.id })
     }) 
@@ -26,7 +26,7 @@ router.get('/:id', (req, res) => {
     })
   });
   
- // POST /watchlist - receive the title of a movie and add it to the database
+ // POST ROUTE /watchlist - finds a USER and findOrCreate MOVIE info then POSTS into Movie Model
  router.post('/', async (req, res) => {
   // TODO: Get form data and add a new record to DB
   const foundUser = await db.user.findOne({
@@ -52,7 +52,7 @@ router.get('/:id', (req, res) => {
   res.redirect(`/watchlist/${userId}`)
 });
   
-//DELETE
+//DELETE ROUTE destroys the ASSOCIATION between single USER and single MOVIE 
 router.delete('/:imdbID', async(req, res) => {
   await db.user_list.destroy({
     where: {
@@ -60,7 +60,6 @@ router.delete('/:imdbID', async(req, res) => {
       movieId: req.body.movieId
     }
   })
-
   res.redirect(`/watchlist/${req.body.user}`)
 })
 

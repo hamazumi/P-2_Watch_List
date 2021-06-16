@@ -1,6 +1,6 @@
-//Import Express
+//Imports Express
 const express = require('express')
-//Import axios
+//Import Axios
 const axios = require('axios')
 //Import AND config dotenv library
 require('dotenv').config()
@@ -30,12 +30,11 @@ app.use(ejsLayouts);
 
 // Routes
 
-//Create home route
+//Create GET ROUTE to access API
 app.get('/', (req,res) => {
   //Use of ejs and ejs layouts below. You can just put index instead of index.ejs
   res.render('index')
 })
-
 app.get('/detail/:imdbID', (req, res) => {
   let newObject = {
     params: {
@@ -45,15 +44,15 @@ app.get('/detail/:imdbID', (req, res) => {
   }
   axios.get('http://www.omdbapi.com/', newObject)
   .then((resFromAPI) => {
-    console.log(resFromAPI.data.Plot)
+    // console.log(resFromAPI.data.Plot)
     let details = resFromAPI.data
-    console.log(details)
+    // console.log(details)
     res.render('watchlist/detail.ejs', {details: details})
   })
   .catch(err => {console.log(err)})
 })
 
-// Imports all routes from the pokemon routes file
+// Imports all ROUTES
 app.use('/results', require('./routes/results'));
 app.use('/user', require('./routes/user'));
 app.use('/watchlist', require('./routes/watchlist'));
