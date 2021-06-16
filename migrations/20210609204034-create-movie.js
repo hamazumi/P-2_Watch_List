@@ -17,14 +17,14 @@ module.exports = {
       genre: {
         type: Sequelize.STRING
       },
-      plot: {
-        type: Sequelize.STRING
-      },
-      production: {
+      poster: {
         type: Sequelize.STRING
       },
       recommend: {
         type: Sequelize.BOOLEAN
+      },
+      imdbID: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
