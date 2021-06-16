@@ -1,8 +1,22 @@
-<h1><%= details.Title %></h1>
-<p>Year: <%= details.Year %></p>
-<p>Genre: <%= details.Genre %></p>
-<p>Actors: <%= details.Actors %></p>
-<h2><%= details.Plot %></h2>
+<div>
+    <div class="flex justify-center text-6xl font-bold text-gray-400">
+        <div>
+            <h1><%= details.Title %></h1>
+        </div>
+    </div>
+    
+    <div class="flex ml-10 my-2">
+        <div>
+            <img class="border-8 border-black" src="<%= details.Poster %>"  alt="poster">
+        </div>
+        <div class="border-8 border-black mx-5 bg-gray-300 p-1">
+            <p><%= details.Plot %></p><br>
+            <p>Actors: <%= details.Actors %></p>
+            <p>Genre: <%= details.Genre %></p>
+            <p>Year: <%= details.Year %></p>
+        </div>
+    </div>
+</div>
 
 
 

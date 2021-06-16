@@ -1,7 +1,7 @@
 <div class="flex justify-center my-40">
     <% if (!locals.username) { %>
         <div class="flex-col ml-20">
-            <h1 class="font-semibold text-gray-400 text-xl" id="user"></h1>
+            <h1 class="font-semibold text-gray-400 text-2xl" id="user"></h1>
             <form action="/results" method="GET">
                <input id="currentUser" type="hidden" name="user">
                <input class="border-4 border-black p-1" type="text" name="search" placeholder="Search Movie">
@@ -16,7 +16,7 @@
         </script>
     <% } else { %>
         <div class="flex-col ml-20">
-            <h1 class="font-semibold text-gray-400 text-xl"> <%= username %>'s Movie Search</h1>
+            <h1 class="font-semibold text-gray-400 text-2xl"> <%= username %>'s Movie Search</h1>
             <form action="/results" method="GET">
                 <input type="hidden" name="user" value="<%= username %>">
                 <input class="border-4 border-black p-1" type="text" name="search" placeholder="Search Movie">
