@@ -19,7 +19,7 @@ In designing and building your project, you will start by forking and cloneing t
 
 1. Name of your app
 
-   ## **Watch List**
+   [WATCHLIST APP](https://my-movie-watchlists.herokuapp.com/)
 
 2. Tech stack you plan to use
 
