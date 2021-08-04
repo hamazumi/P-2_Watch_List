@@ -18,7 +18,7 @@ In your second project you will create a full stack Express and Postgres app whi
 In designing and building your project, you will start by forking and cloneing this repository, and then editing this README to include the following information:
 
 1. Name of your app
-
+   Try it out here:
    [WATCHLIST APP](https://my-movie-watchlists.herokuapp.com/)
 
 2. Tech stack you plan to use
